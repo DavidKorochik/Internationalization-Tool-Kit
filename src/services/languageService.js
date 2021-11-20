@@ -1,26 +1,26 @@
 import axios from 'axios';
 
+const promiseFunction = (data) => {
+  return new Promise((res, rej) => {
+    return res(data);
+  });
+};
+
 const languageService = {
   getLanguages: () => {
     //   axios.get(`${server}/words`);
-    return new Promise((res, rej) => {
-      try {
-        res([
-          {
-            languageId: 1,
-            language: 'English',
-            abbreviation: 'en',
-          },
-          {
-            languageId: 2,
-            language: 'Hebrew',
-            abbreviation: 'he',
-          },
-        ]);
-      } catch (err) {
-        rej(err);
-      }
-    });
+    promiseFunction([
+      {
+        languageId: 1,
+        language: 'English',
+        abbreviation: 'en',
+      },
+      {
+        languageId: 2,
+        language: 'Hebrew',
+        abbreviation: 'he',
+      },
+    ]);
   },
   saveLanguage: () => {
     //   axios.post(`${server}/words`, data)
@@ -32,7 +32,28 @@ const languageService = {
     // axios.post(`${server}/words/translation`, data);
   },
   getWordTranslation: () => {
-    // axios.get(`${server}/words/translation`);
+    promiseFunction([
+      {
+        key: 'welcome_page_hello_text',
+        translations: [
+          {
+            languageId: 1,
+            language: 'English',
+            sentence: 'Hello',
+          },
+          {
+            languageId: 2,
+            language: 'Hebrew',
+            sentence: 'שלום',
+          },
+          {
+            languageId: 3,
+            language: 'Spanish',
+            sentence: '',
+          },
+        ],
+      },
+    ]);
   },
   getGoogleTranslateTranslation: () => {
     // axios.post(`${server}/googletranslate`);
