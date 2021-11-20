@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 const promiseFunction = (data) => {
   return new Promise((res, rej) => {
@@ -7,9 +7,35 @@ const promiseFunction = (data) => {
 };
 
 const languageService = {
-  getLanguages: () => {
+  getAllLanguages: async () => {
+    //   axios.get(`${server}/languages`);
+    return await promiseFunction([
+      {
+        language: 'English',
+        abbreviation: 'en',
+      },
+      {
+        language: 'Hebrew',
+        abbreviation: 'he',
+      },
+      {
+        language: 'France',
+        abbreviation: 'fr',
+      },
+      {
+        language: 'Spanish',
+        abbreviation: 'es',
+      },
+      {
+        language: 'Japaneese',
+        abbreviation: 'jp',
+      },
+    ]);
+  },
+
+  getLanguages: async () => {
     //   axios.get(`${server}/words`);
-    promiseFunction([
+    return await promiseFunction([
       {
         languageId: 1,
         language: 'English',
@@ -31,8 +57,8 @@ const languageService = {
   addWordTranslation: () => {
     // axios.post(`${server}/words/translation`, data);
   },
-  getWordTranslation: () => {
-    promiseFunction([
+  getWordTranslation: async () => {
+    return await promiseFunction([
       {
         key: 'welcome_page_hello_text',
         translations: [

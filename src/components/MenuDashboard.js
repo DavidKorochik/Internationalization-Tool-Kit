@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from '@ant-design/icons';
+import { UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import LanguagesInput from './LanguagesInput';
+import LanguagesList from './LanguagesList';
 
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 export default function MenuDashboard() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed] = useState(false);
 
   // const toggle = () => {
   //   setCollapsed(!collapsed);
@@ -49,8 +44,25 @@ export default function MenuDashboard() {
             minHeight: 670,
           }}
         >
-          <h1>Pal4Pal Internationalization Tool Kit</h1>
+          <h1
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              fontSize: '30px',
+              fontWeight: 800,
+            }}
+          >
+            Pal4Pal Internationalization Tool Kit
+          </h1>
+          <br />
+          <br />
+          <br />
           <LanguagesInput />
+          <br />
+          <br />
+          <br />
+          <br />
+          <LanguagesList />
         </Content>
       </Layout>
     </Layout>

@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { AutoComplete } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { AutoComplete, Button } from 'antd';
+import languageService from '../services/languageService';
 
 export default function LanguagesInput() {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
 
-  const onSearch = (searchText) => {
-    setOptions('');
-  };
+  const onSearch = (searchText) => {};
 
   const onSelect = (data) => {
     console.log('onSelect', data);
@@ -18,6 +17,17 @@ export default function LanguagesInput() {
     console.log(value);
   };
 
+  useEffect(() => {
+    (async () => {
+      const langs = await languageService.getAllLanguages();
+      setOptions(
+        langs.map((lang) => ({
+          value: `${lang.language} (${lang.abbreviation})`,
+        }))
+      );
+    })();
+  }, []);
+
   return (
     <>
       <AutoComplete
@@ -25,14 +35,15 @@ export default function LanguagesInput() {
         style={{
           width: 500,
           marginLeft: '30%',
-          border: '1px solid black',
         }}
         onSelect={onSelect}
         onSearch={onSearch}
         onChange={onChange}
         placeholder='Search a language'
       />
-      <button style={{ marginLeft: '30px' }}>Add Language</button>
+      <Button type='primary' style={{ marginLeft: '30px' }}>
+        Add Language
+      </Button>
     </>
   );
 }
