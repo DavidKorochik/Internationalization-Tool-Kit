@@ -1,11 +1,10 @@
 import './App.css';
-import Home from './components/Home';
+import MenuDashboard from './components/MenuDashboard';
 
 function App() {
   return (
     <div>
-      {/* <h1>Hello World!</h1> */}
-      <Home />
+      <MenuDashboard />
     </div>
   );
 }
