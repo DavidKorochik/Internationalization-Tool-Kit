@@ -24,10 +24,10 @@ export default function MenuDashboard() {
         <div className='logo'>...</div>
         <Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
           <Menu.Item key='1' icon={<UserOutlined />}>
-            nav 1
+            Home
           </Menu.Item>
           <Menu.Item key='2' icon={<VideoCameraOutlined />}>
-            nav 2
+            Words
           </Menu.Item>
         </Menu>
       </Sider>
@@ -49,6 +49,7 @@ export default function MenuDashboard() {
             minHeight: 670,
           }}
         >
+          <h1>Pal4Pal Internationalization Tool Kit</h1>
           <LanguagesInput />
         </Content>
       </Layout>
