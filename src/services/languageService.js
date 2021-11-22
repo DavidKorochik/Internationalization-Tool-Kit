@@ -53,13 +53,13 @@ const languageService = {
       },
     ]);
   },
-  saveLanguage: () => {
+  saveLanguage: async (data) => {
     //   axios.post(`${server}/words`, data)
   },
-  deleteSavedLanguage: () => {
+  deleteSavedLanguage: async (id) => {
     // axios.delete(`${server}/words/${id}`);
   },
-  addWordTranslation: () => {
+  addWordTranslation: async (data) => {
     // axios.post(`${server}/words/translation`, data);
   },
   getWordTranslation: async () => {
@@ -86,7 +86,7 @@ const languageService = {
       },
     ]);
   },
-  getGoogleTranslateTranslation: () => {
+  getGoogleTranslateTranslation: async () => {
     // axios.post(`${server}/googletranslate`);
   },
 };

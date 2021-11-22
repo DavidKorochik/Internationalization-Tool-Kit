@@ -15,7 +15,18 @@ export default function LanguagesInput() {
 
   const onChange = (data) => {
     setValue(data);
-    console.log(value);
+  };
+
+  const addLanguage = async () => {
+    const selectedLanguageSeperated = selectedLanguage.split(' '); // For example - ['Hebrew', '(he)']
+
+    const language = selectedLanguageSeperated[0]; // For example - Hebrew
+    const abbreviation = selectedLanguageSeperated[1].replace(/[{()}]/g, ''); // For example - he and not (he)
+
+    return await languageService.saveLanguage({
+      language,
+      abbreviation,
+    });
   };
 
   useEffect(() => {
@@ -42,7 +53,11 @@ export default function LanguagesInput() {
         onChange={onChange}
         placeholder='Search a language'
       />
-      <Button type='primary' style={{ marginLeft: '30px' }}>
+      <Button
+        onClick={addLanguage}
+        type='primary'
+        style={{ marginLeft: '30px' }}
+      >
         Add Language
       </Button>
     </>

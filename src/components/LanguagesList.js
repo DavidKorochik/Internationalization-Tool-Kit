@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import languageService from '../services/languageService';
-import { Card, Col, Row, Divider } from 'antd';
+import { Card } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 export default function LanguagesList() {
   const [languages, setLanguages] = useState([]);
+
+  const deleteLanguage = async (id) => {
+    await languageService.deleteSavedLanguage(
+      languages.map((lang) => lang.id !== id)
+    );
+  };
 
   useEffect(() => {
     (async () => {
@@ -44,6 +51,16 @@ export default function LanguagesList() {
               }}
             >
               <h3 style={{ color: 'white' }}>{lang.abbreviation}</h3>
+              <DeleteOutlined
+                style={{
+                  position: 'absolute',
+                  bottom: '100px',
+                  left: '300px',
+                  fontSize: '20px',
+                  color: 'red',
+                }}
+                onClick={() => deleteLanguage(lang.id)}
+              />
             </Card>
           </div>
         ))}
