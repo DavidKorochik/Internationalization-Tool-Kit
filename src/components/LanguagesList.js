@@ -31,10 +31,19 @@ export default function LanguagesList() {
             key={index}
             style={{
               padding: '30px',
+              color: 'white',
             }}
           >
-            <Card title={lang.language} bordered={false} style={{ width: 300 }}>
-              <h3>{lang.abbreviation}</h3>
+            <Card
+              title={lang.language}
+              bordered={false}
+              style={{
+                width: 350,
+                backgroundColor: '#40A9FF',
+                borderRadius: '20px',
+              }}
+            >
+              <h3 style={{ color: 'white' }}>{lang.abbreviation}</h3>
             </Card>
           </div>
         ))}

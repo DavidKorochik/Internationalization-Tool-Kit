@@ -5,11 +5,12 @@ import languageService from '../services/languageService';
 export default function LanguagesInput() {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
   const onSearch = (searchText) => {};
 
   const onSelect = (data) => {
-    console.log('onSelect', data);
+    setSelectedLanguage(data);
   };
 
   const onChange = (data) => {
