@@ -46,6 +46,11 @@ const languageService = {
         language: 'Hebrew',
         abbreviation: 'he',
       },
+      {
+        languageId: 3,
+        language: 'France',
+        abbreviation: 'fr',
+      },
     ]);
   },
   saveLanguage: () => {
