@@ -79,8 +79,28 @@ const languageService = {
           },
           {
             languageId: 3,
-            language: 'Spanish',
-            sentence: '',
+            language: 'France',
+            sentence: 'Bonjour',
+          },
+        ],
+      },
+      {
+        key: 'hello_world_text',
+        translations: [
+          {
+            languageId: 1,
+            language: 'English',
+            sentence: 'Hello World',
+          },
+          {
+            languageId: 2,
+            language: 'Hebrew',
+            sentence: 'שלום עולם',
+          },
+          {
+            languageId: 3,
+            language: 'France',
+            sentence: 'Bonjour Olam',
           },
         ],
       },
