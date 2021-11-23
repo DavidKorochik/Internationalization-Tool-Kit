@@ -1,13 +1,71 @@
-import React, { useState } from 'react';
-import { Collapse, Layout, Menu } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Layout, Menu, Table, Badge, Dropdown, Space } from 'antd';
 import { Link } from 'react-router-dom';
-import { UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import languageService from '../services/languageService';
+import {
+  DownOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
 
-const { Panel } = Collapse;
 const { Sider, Content } = Layout;
 
 export default function WordsList() {
   const [collapsed] = useState(false);
+  const [dataTranslation, setDataTranslation] = useState([]);
+
+  const columns = [
+    {
+      title: 'Key',
+      key: 'key',
+      dataIndex: 'key',
+    },
+    {
+      title: 'Value',
+      key: 'value',
+      dataIndex: 'value',
+    },
+  ];
+
+  const expandedRowRender = () => {
+    const translationSentences = dataTranslation.map((t) => t.translations);
+    console.log(translationSentences);
+
+    const columns = [
+      {
+        title: 'Language',
+        key: 'language',
+        dataIndex: 'language',
+      },
+      {
+        title: 'Translation',
+        key: 'translation',
+        dataIndex: 'translation',
+      },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        bordered
+        dataSource={translationSentences.map((trans) =>
+          trans.map((t, index) => ({
+            key: index,
+            language: t.language !== 'English' ? t.language : '',
+            translation: t.language !== 'English' ? t.sentence : '',
+          }))
+        )}
+      />
+    );
+  };
+
+  useEffect(() => {
+    (async () => {
+      const translations = await languageService.getWordTranslation();
+
+      setDataTranslation(translations);
+    })();
+  }, []);
 
   return (
     <Layout>
@@ -22,7 +80,6 @@ export default function WordsList() {
           </Menu.Item>
         </Menu>
       </Sider>
-
       <Content
         className='site-layout-background'
         style={{
@@ -44,11 +101,18 @@ export default function WordsList() {
         <br />
         <br />
         <br />
-        <Collapse defaultActiveKey={['1']}>
-          <Panel header='This is panel header 1' key='1'>
-            <p>Hello World</p>
-          </Panel>
-        </Collapse>
+
+        <Table
+          expandable={{ expandedRowRender }}
+          columns={columns}
+          bordered
+          dataSource={dataTranslation.map((t) => ({
+            key: t.key,
+            value: t.translations.map((trans) =>
+              trans.language === 'English' ? trans.sentence : ''
+            ),
+          }))}
+        />
       </Content>
     </Layout>
   );
