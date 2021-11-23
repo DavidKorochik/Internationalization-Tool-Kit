@@ -3,11 +3,15 @@ import { Layout, Menu } from 'antd';
 import { UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import LanguagesInput from './LanguagesInput';
 import LanguagesList from './LanguagesList';
+import WordsList from './WordsList';
+import { Link, useLocation } from 'react-router-dom';
 
 const { Sider, Content } = Layout;
 
 export default function MenuDashboard() {
   const [collapsed] = useState(false);
+
+  let location = useLocation();
 
   // const toggle = () => {
   //   setCollapsed(!collapsed);
@@ -19,10 +23,10 @@ export default function MenuDashboard() {
         <div className='logo'>...</div>
         <Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
           <Menu.Item key='1' icon={<UserOutlined />}>
-            Home
+            <Link to='/'>Home</Link>
           </Menu.Item>
           <Menu.Item key='2' icon={<VideoCameraOutlined />}>
-            Words
+            <Link to='/words'>Words</Link>
           </Menu.Item>
         </Menu>
       </Sider>
