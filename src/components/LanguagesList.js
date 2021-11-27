@@ -22,7 +22,12 @@ export default function LanguagesList() {
   return (
     <>
       <h1
-        style={{ display: 'flex', justifyContent: 'center', fontSize: '24px' }}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          fontSize: '24px',
+          margin: '50px',
+        }}
       >
         Languages List
       </h1>
@@ -46,11 +51,11 @@ export default function LanguagesList() {
               bordered={false}
               style={{
                 width: 350,
-                backgroundColor: '#40A9FF',
                 borderRadius: '20px',
+                boxShadow: '10px 5px 5px gray',
               }}
             >
-              <h3 style={{ color: 'white' }}>{lang.abbreviation}</h3>
+              <h3 style={{ color: 'black' }}>{lang.abbreviation}</h3>
               <DeleteOutlined
                 style={{
                   position: 'absolute',
