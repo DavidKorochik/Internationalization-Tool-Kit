@@ -1,6 +1,6 @@
 import './App.css';
 import MenuDashboard from './components/MenuDashboard';
-import WordsList from './components/WordsList';
+import WordsList from './components/words-page/WordsList';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
