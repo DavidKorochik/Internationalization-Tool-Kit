@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Menu, Table, Badge, Dropdown, Space } from 'antd';
+import { Layout, Menu, Table } from 'antd';
 import { Link } from 'react-router-dom';
-import languageService from '../services/languageService';
-import {
-  DownOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
+import languageService from '../../services/languageService';
+import WordRow from './WordRow';
 
 const { Sider, Content } = Layout;
 
 export default function WordsList() {
-  const [collapsed] = useState(false);
   const [dataTranslation, setDataTranslation] = useState([]);
 
   const columns = [
@@ -27,20 +22,35 @@ export default function WordsList() {
     },
   ];
 
-  const expandedRowRender = () => {
-    const translationSentences = dataTranslation.map((t) => t.translations);
-    console.log(translationSentences);
+  const dataSource = dataTranslation.map((x) => ({
+    key: x.key,
+    value: x.translations
+      .filter((trans) => trans.language === 'English')
+      .map((trans) => trans.sentence),
+  }));
+
+  const addWordToTranslation = async () => {
+    await languageService.addWordTranslation();
+  };
+
+  const expandedRowRender = (record) => {
+    const selectedTranslation = dataTranslation.find(
+      (x) => x.key === record.key
+    );
 
     const columns = [
       {
         title: 'Language',
-        key: 'language',
         dataIndex: 'language',
+        key: 'language',
       },
       {
         title: 'Translation',
-        key: 'translation',
-        dataIndex: 'translation',
+        dataIndex: 'sentence',
+        key: 'sentence',
+        render: (translatedSentece) => (
+          <WordRow translatedSentece={translatedSentece} />
+        ),
       },
     ];
 
@@ -48,12 +58,9 @@ export default function WordsList() {
       <Table
         columns={columns}
         bordered
-        dataSource={translationSentences.map((trans) =>
-          trans.map((t, index) => ({
-            key: index,
-            language: t.language !== 'English' ? t.language : '',
-            translation: t.language !== 'English' ? t.sentence : '',
-          }))
+        pagination={false}
+        dataSource={selectedTranslation.translations.filter(
+          (x) => x.language !== 'English'
         )}
       />
     );
@@ -69,13 +76,13 @@ export default function WordsList() {
 
   return (
     <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider trigger={null}>
         <div className='logo'>...</div>
         <Menu theme='dark' mode='inline' defaultSelectedKeys={['2']}>
-          <Menu.Item key='1' icon={<UserOutlined />}>
+          <Menu.Item key='1'>
             <Link to='/'>Home</Link>
           </Menu.Item>
-          <Menu.Item key='2' icon={<VideoCameraOutlined />}>
+          <Menu.Item key='2'>
             <Link to='/words'>Words</Link>
           </Menu.Item>
         </Menu>
@@ -85,7 +92,7 @@ export default function WordsList() {
         style={{
           margin: '24px 16px',
           padding: 24,
-          minHeight: 670,
+          minHeight: '100vh',
         }}
       >
         <h1
@@ -94,24 +101,17 @@ export default function WordsList() {
             justifyContent: 'center',
             fontSize: '30px',
             fontWeight: 800,
+            marginBottom: '70px',
           }}
         >
           Pal4Pal Internationalization Tool Kit
         </h1>
-        <br />
-        <br />
-        <br />
-
+        <button onClick={addWordToTranslation}>Add String</button>
         <Table
           expandable={{ expandedRowRender }}
           columns={columns}
           bordered
-          dataSource={dataTranslation.map((t) => ({
-            key: t.key,
-            value: t.translations.map((trans) =>
-              trans.language === 'English' ? trans.sentence : ''
-            ),
-          }))}
+          dataSource={dataSource}
         />
       </Content>
     </Layout>

@@ -62,6 +62,7 @@ const languageService = {
   addWordTranslation: async (data) => {
     // axios.post(`${server}/words/translation`, data);
   },
+
   getWordTranslation: async () => {
     return await promiseFunction([
       {
@@ -106,8 +107,8 @@ const languageService = {
       },
     ]);
   },
-  getGoogleTranslateTranslation: async () => {
-    // axios.post(`${server}/googletranslate`);
+  getGoogleTranslateTranslation: async (data) => {
+    // axios.post(`${server}/googletranslate`, data);
   },
 };
 
