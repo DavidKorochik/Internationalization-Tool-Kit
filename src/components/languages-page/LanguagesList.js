@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import languageService from '../services/languageService';
+import languageService from '../../services/languageService';
 import { Card } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 

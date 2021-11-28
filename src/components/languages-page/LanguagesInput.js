@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AutoComplete, Button } from 'antd';
-import languageService from '../services/languageService';
+import languageService from '../../services/languageService';
 
 export default function LanguagesInput() {
   const [value, setValue] = useState('');

@@ -1,6 +1,6 @@
 import React from 'react';
-import LanguagesInput from './LanguagesInput';
-import LanguagesList from './LanguagesList';
+import LanguagesInput from '../components/languages-page/LanguagesInput';
+import LanguagesList from '../components/languages-page/LanguagesList';
 import PageLayout from './PageLayout';
 
 export default function MenuDashboard() {
