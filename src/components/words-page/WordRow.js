@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Input } from 'antd';
 import languageService from '../../services/languageService';
 
-const WordRow = ({ translatedSentece }) => {
+const WordRow = ({ translatedSentece, dataTranslation }) => {
   const [inputValue, setInputValue] = useState(translatedSentece);
+
+  console.log(dataTranslation);
 
   const translateNewWordInput = async () => {
     const translatedWord = await languageService.getGoogleTranslateTranslation(
@@ -29,10 +31,7 @@ const WordRow = ({ translatedSentece }) => {
         style={{ width: '70%' }}
       />
 
-      <button
-        onClick={translateNewWordInput}
-        style={{ marginLeft: '20px', padding: '5px' }}
-      >
+      <button style={{ margin: '10px' }} onClick={translateNewWordInput}>
         G
       </button>
       <button onClick={onSaveTranslatedWord}>Save</button>

@@ -44,7 +44,10 @@ export default function WordsList() {
         dataIndex: 'sentence',
         key: 'sentence',
         render: (translatedSentece) => (
-          <WordRow translatedSentece={translatedSentece} />
+          <WordRow
+            translatedSentece={translatedSentece}
+            dataTranslation={dataTranslation}
+          />
         ),
       },
     ];
