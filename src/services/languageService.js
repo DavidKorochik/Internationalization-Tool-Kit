@@ -24,7 +24,7 @@ const languageService = {
       },
       {
         language: 'Spanish',
-        abbreviation: 'es',
+        abbreviation: 'sp',
       },
       {
         language: 'Japaneese',
@@ -50,6 +50,11 @@ const languageService = {
         languageId: 3,
         language: 'France',
         abbreviation: 'fr',
+      },
+      {
+        languageId: 4,
+        language: 'Spanish',
+        abbreviation: 'sp',
       },
     ]);
   },
@@ -83,6 +88,11 @@ const languageService = {
             language: 'France',
             sentence: 'Bonjour',
           },
+          {
+            languageId: 4,
+            language: 'Spanish',
+            sentence: 'Hola',
+          },
         ],
       },
       {
@@ -102,6 +112,11 @@ const languageService = {
             languageId: 3,
             language: 'France',
             sentence: 'Bonjour Olam',
+          },
+          {
+            languageId: 4,
+            language: 'Spanish',
+            sentence: 'Holo Olamo',
           },
         ],
       },
