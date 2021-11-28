@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Menu, Table } from 'antd';
-import { Link } from 'react-router-dom';
+import { Table } from 'antd';
 import languageService from '../../services/languageService';
 import WordRow from './WordRow';
 import AddWord from './AddWord';
-
-const { Sider, Content } = Layout;
+import PageLayout from '../PageLayout';
 
 export default function WordsList() {
   const [dataTranslation, setDataTranslation] = useState([]);
@@ -72,48 +70,17 @@ export default function WordsList() {
   }, []);
 
   return (
-    <Layout>
-      <Sider trigger={null}>
-        <div className='logo'>...</div>
-        <Menu theme='dark' mode='inline' defaultSelectedKeys={['2']}>
-          <Menu.Item key='1'>
-            <Link to='/'>Home</Link>
-          </Menu.Item>
-          <Menu.Item key='2'>
-            <Link to='/words'>Words</Link>
-          </Menu.Item>
-        </Menu>
-      </Sider>
-      <Content
-        className='site-layout-background'
-        style={{
-          margin: '24px 16px',
-          padding: 24,
-          minHeight: '100vh',
-        }}
-      >
-        <h1
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            fontSize: '30px',
-            fontWeight: 800,
-            marginBottom: '70px',
-          }}
-        >
-          Pal4Pal Internationalization Tool Kit
-        </h1>
-        <AddWord
-          dataTranslation={dataTranslation}
-          setDataTranslation={setDataTranslation}
-        />
-        <Table
-          expandable={{ expandedRowRender }}
-          columns={columns}
-          bordered
-          dataSource={dataSource}
-        />
-      </Content>
-    </Layout>
+    <PageLayout>
+      <AddWord
+        dataTranslation={dataTranslation}
+        setDataTranslation={setDataTranslation}
+      />
+      <Table
+        expandable={{ expandedRowRender }}
+        columns={columns}
+        bordered
+        dataSource={dataSource}
+      />
+    </PageLayout>
   );
 }
