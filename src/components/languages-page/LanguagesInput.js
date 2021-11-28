@@ -5,9 +5,16 @@ import languageService from '../../services/languageService';
 export default function LanguagesInput() {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
+  const [filteredOptions, setFilteredOptions] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState('');
 
-  const onSearch = (searchText) => {};
+  const onSearch = (searchText) => {
+    setFilteredOptions(
+      options.filter((x) =>
+        x.value.toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
+  };
 
   const onSelect = (data) => {
     setSelectedLanguage(data);
@@ -32,18 +39,20 @@ export default function LanguagesInput() {
   useEffect(() => {
     (async () => {
       const langs = await languageService.getAllLanguages();
-      setOptions(
-        langs.map((lang) => ({
-          value: `${lang.language} (${lang.abbreviation})`,
-        }))
-      );
+
+      const _options = langs.map((lang) => ({
+        value: `${lang.language} (${lang.abbreviation})`,
+      }));
+
+      setOptions(_options);
+      setFilteredOptions(_options);
     })();
   }, []);
 
   return (
     <>
       <AutoComplete
-        options={options}
+        options={filteredOptions}
         style={{
           width: 500,
           marginLeft: '30%',
