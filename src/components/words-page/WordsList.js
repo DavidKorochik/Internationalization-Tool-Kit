@@ -3,11 +3,14 @@ import { Layout, Menu, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import languageService from '../../services/languageService';
 import WordRow from './WordRow';
+import AddWord from './AddWord';
 
 const { Sider, Content } = Layout;
 
 export default function WordsList() {
   const [dataTranslation, setDataTranslation] = useState([]);
+
+  console.log(dataTranslation);
 
   const columns = [
     {
@@ -28,10 +31,6 @@ export default function WordsList() {
       .filter((trans) => trans.language === 'English')
       .map((trans) => trans.sentence),
   }));
-
-  const addWordToTranslation = async () => {
-    await languageService.addWordTranslation();
-  };
 
   const expandedRowRender = (record) => {
     const selectedTranslation = dataTranslation.find(
@@ -106,7 +105,10 @@ export default function WordsList() {
         >
           Pal4Pal Internationalization Tool Kit
         </h1>
-        <button onClick={addWordToTranslation}>Add String</button>
+        <AddWord
+          dataTranslation={dataTranslation}
+          setDataTranslation={setDataTranslation}
+        />
         <Table
           expandable={{ expandedRowRender }}
           columns={columns}
