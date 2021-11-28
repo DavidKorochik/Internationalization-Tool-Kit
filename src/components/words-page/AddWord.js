@@ -50,15 +50,27 @@ export default function AddWord({ dataTranslation, setDataTranslation }) {
       autoComplete='off'
     >
       <Form.Item label='Key' name='key'>
-        <Input value={key} onChange={(e) => setKey(e.target.value)} />
+        <Input
+          style={{ width: '40%' }}
+          value={key}
+          onChange={(e) => setKey(e.target.value)}
+        />
       </Form.Item>
 
       <Form.Item label='Value' name='value'>
-        <Input value={value} onChange={(e) => setValue(e.target.value)} />
+        <Input
+          style={{ width: '40%' }}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button onClick={addWordToTranslation} type='primary'>
+        <Button
+          style={{ marginLeft: '15%' }}
+          onClick={addWordToTranslation}
+          type='primary'
+        >
           Submit
         </Button>
       </Form.Item>
