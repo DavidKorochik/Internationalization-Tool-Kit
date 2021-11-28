@@ -10,8 +10,6 @@ const { Sider, Content } = Layout;
 export default function WordsList() {
   const [dataTranslation, setDataTranslation] = useState([]);
 
-  console.log(dataTranslation);
-
   const columns = [
     {
       title: 'Key',
