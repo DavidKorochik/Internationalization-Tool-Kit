@@ -13,22 +13,27 @@ const languageService = {
       {
         language: 'English',
         abbreviation: 'en',
+        imageUrl: '',
       },
       {
         language: 'Hebrew',
         abbreviation: 'he',
+        imageUrl: '',
       },
       {
         language: 'France',
         abbreviation: 'fr',
+        imageUrl: '',
       },
       {
         language: 'Spanish',
         abbreviation: 'sp',
+        imageUrl: '',
       },
       {
         language: 'Japaneese',
         abbreviation: 'jp',
+        imageUrl: '',
       },
     ]);
   },
