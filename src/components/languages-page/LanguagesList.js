@@ -5,17 +5,23 @@ import { DeleteOutlined } from '@ant-design/icons';
 
 export default function LanguagesList() {
   const [languages, setLanguages] = useState([]);
+  const [flags, setFlags] = useState([]);
 
   const deleteLanguage = async (id) => {
     await languageService.deleteSavedLanguage(
-      languages.map((lang) => lang.id !== id)
+      languages.map((lang) => lang.languageId !== id)
     );
   };
 
   useEffect(() => {
     (async () => {
       const langs = await languageService.getLanguages();
+      const allLanguagesArray = await languageService.getAllLanguages();
+
+      const flags = allLanguagesArray.map((language) => language.imageUrl);
+
       setLanguages(langs);
+      setFlags(flags);
     })();
   }, []);
 
@@ -55,7 +61,15 @@ export default function LanguagesList() {
                 boxShadow: '10px 5px 5px gray',
               }}
             >
-              <h3 style={{ color: 'black' }}>{lang.abbreviation}</h3>
+              <h3 style={{ color: 'black' }}>
+                {lang.abbreviation}{' '}
+                <img
+                  style={{ width: '10%', marginLeft: '82%' }}
+                  src={flags[index]}
+                  alt='Nation Flag'
+                />
+              </h3>
+
               <DeleteOutlined
                 style={{
                   position: 'absolute',
@@ -64,7 +78,7 @@ export default function LanguagesList() {
                   fontSize: '20px',
                   color: 'red',
                 }}
-                onClick={() => deleteLanguage(lang.id)}
+                onClick={() => deleteLanguage(lang.languageId)}
               />
             </Card>
           </div>

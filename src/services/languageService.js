@@ -13,27 +13,32 @@ const languageService = {
       {
         language: 'English',
         abbreviation: 'en',
-        imageUrl: '',
+        imageUrl:
+          'https://media.istockphoto.com/photos/flag-of-england-picture-id854115776',
       },
       {
         language: 'Hebrew',
         abbreviation: 'he',
-        imageUrl: '',
+        imageUrl:
+          'https://studentaffairs.duke.edu/sites/default/files/2021-01/israeli%20flag.jpg',
       },
       {
         language: 'France',
         abbreviation: 'fr',
-        imageUrl: '',
+        imageUrl:
+          'https://www.bestcustomflags.com/wp-content/uploads/2016/06/france-flag.jpg',
       },
       {
         language: 'Spanish',
         abbreviation: 'sp',
-        imageUrl: '',
+        imageUrl:
+          'https://flagcolor.com/wp-content/uploads/2018/11/spain_flag.png',
       },
       {
         language: 'Japaneese',
         abbreviation: 'jp',
-        imageUrl: '',
+        imageUrl:
+          'https://img5.goodfon.com/wallpaper/nbig/b/e8/japan-flag-flag-of-japan-japanese-flag-japan-large-flag.jpg',
       },
     ]);
   },
