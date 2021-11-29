@@ -43,31 +43,34 @@ export default function AddWord({ dataTranslation, setDataTranslation }) {
 
   return (
     <Form
+      style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
       name='addWord'
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       autoComplete='off'
     >
-      <Form.Item label='Key' name='key'>
+      <Form.Item label='Key' name='key' style={{ width: '20%' }}>
         <Input
-          style={{ width: '40%' }}
+          style={{ width: '100%' }}
           value={key}
           onChange={(e) => setKey(e.target.value)}
         />
       </Form.Item>
 
-      <Form.Item label='Value' name='value'>
+      <Form.Item
+        label='Value'
+        name='value'
+        style={{ marginLeft: '30px', width: '40%' }}
+      >
         <Input
-          style={{ width: '40%' }}
+          style={{ width: '100%' }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Form.Item>
         <Button
-          style={{ marginLeft: '15%' }}
+          style={{ marginLeft: '15%', marginLeft: '30px' }}
           onClick={addWordToTranslation}
           type='primary'
         >
