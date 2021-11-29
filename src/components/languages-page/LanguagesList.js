@@ -58,7 +58,7 @@ export default function LanguagesList() {
               style={{
                 width: 350,
                 borderRadius: '20px',
-                boxShadow: '10px 5px 5px gray',
+                boxShadow: '0 4px 8px 0 #00000050, 0 6px 20px 0 #00000050',
               }}
             >
               <h3 style={{ color: 'black' }}>
